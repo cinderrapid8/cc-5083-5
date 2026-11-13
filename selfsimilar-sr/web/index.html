@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>自相似图像超分 · Self-Similarity SR</title>
+<link rel="stylesheet" href="/web/styles.css">
+</head>
+<body>
+<header>
+  <h1>单图自相似超分辨率工作台</h1>
+  <p class="sub">候选细节仅来自输入图自身的多尺度金字塔；参考清晰图不参与候选搜索。匹配不可信时回退双三次重采样。</p>
+</header>
+
+<main>
+  <section class="panel controls">
+    <h2>1 · 输入与参数（由自相似放大内核驱动）</h2>
+    <div class="row">
+      <label class="upload btn">
+        选择输入 PNG
+        <input type="file" id="fileInput" accept="image/png" hidden>
+      </label>
+      <span id="inputInfo" class="muted">尚未加载图像</span>
+    </div>
+
+    <div class="grid">
+      <label>放大倍率
+        <select id="scale">
+          <option value="2">2×</option>
+          <option value="3">3×</option>
+          <option value="4">4×</option>
+        </select>
+      </label>
+      <label>块大小 patchSize
+        <input type="number" id="p_patchSize" min="3" max="11" step="2">
+      </label>
+      <label>块步长 patchStride
+        <input type="number" id="p_patchStride" min="1" max="8" step="1">
+      </label>
+      <label>金字塔层数 pyramidLevels
+        <input type="number" id="p_pyramidLevels" min="1" max="4" step="1">
+      </label>
+      <label>置信阈值 confidenceThreshold
+        <input type="number" id="p_confidenceThreshold" min="0" max="1" step="0.05">
+      </label>
+      <label>亮度代价权重 brightnessWeight
+        <input type="number" id="p_brightnessWeight" min="0" max="2" step="0.05">
+      </label>
+      <label>旋转惩罚(90°) rotationPenalty
+        <input type="number" id="p_rotationPenalty90" min="0" max="20" step="1">
+      </label>
+      <label>尺度惩罚 scalePenalty
+        <input type="number" id="p_scalePenalty" min="0" max="10" step="0.5">
+      </label>
+      <label>反投影迭代 backProjectionIters
+        <input type="number" id="p_backProjectionIters" min="0" max="20" step="1">
+      </label>
+      <label>降质模糊σ degradeSigma
+        <input type="number" id="p_degradeSigma" min="0" max="3" step="0.1">
+      </label>
+    </div>
+    <div class="row">
+      <button class="btn primary" id="runBtn">运行自相似放大</button>
+      <button class="btn" id="resetBtn">恢复内核默认参数</button>
+      <button class="btn" id="sweepBtn">参数影响扫描（置信阈值）</button>
+    </div>
+    <div id="status" class="status muted">就绪。</div>
+  </section>
+
+  <section class="panel">
+    <h2>2 · 结果区：放大细节与可信程度</h2>
+    <div id="metrics" class="metrics hidden">
+      <div><b>输出尺寸</b><span id="m_size">–</span></div>
+      <div><b>耗时</b><span id="m_time">–</span></div>
+      <div><b>观测残差 RMS</b><span id="m_resid">–</span></div>
+      <div><b>残差峰值</b><span id="m_residmax">–</span></div>
+      <div><b>平均置信度</b><span id="m_conf">–</span></div>
+      <div><b>细节迁移占比</b><span id="m_transfer">–</span></div>
+    </div>
+    <div class="viewtabs" id="viewTabs">
+      <button class="tab active" data-kind="sr">SR 重建</button>
+      <button class="tab" data-kind="bicubic">双三次基线</button>
+      <button class="tab" data-kind="transfer">迁移区域</button>
+      <button class="tab" data-kind="confidence">置信热图</button>
+      <button class="tab" data-kind="reprojected">投回输入尺度</button>
+      <button class="tab" data-kind="residual">观测残差</button>
+    </div>
+    <div class="canvaswrap">
+      <canvas id="viewCanvas"></canvas>
+      <canvas id="targetOverlay" class="overlay"></canvas>
+    </div>
+    <p class="muted small">点击 SR 图上的网格位置可查看该目标块的局部候选与代价分解（见下）。绿色遮罩=采用了细节迁移；热图蓝→红=置信度低→高。</p>
+  </section>
+
+  <section class="panel">
+    <h2>3 · 局部候选检查</h2>
+    <div id="candidateInfo" class="muted">先运行重建，再在结果图上点击一个目标块。</div>
+    <div id="candidateList" class="candidates"></div>
+  </section>
+
+  <section class="panel hidden" id="sweepPanel">
+    <h2>4 · 参数变化的影响</h2>
+    <table id="sweepTable"><thead><tr><th>参数值</th><th>迁移占比</th><th>平均置信</th><th>残差RMS</th><th>预览</th></tr></thead><tbody></tbody></table>
+  </section>
+
+  <section class="panel note">
+    <h2>方法边界</h2>
+    <p>自相似超分是<b>约束下的估计</b>，不能保证恢复唯一原图：单个低分辨率观测对应许多合法高分辨率图像。
+    当图像缺乏自相似时，匹配置信度低，系统只做保守重采样，不会复制纹理制造不存在的文字或边缘。
+    观测残差仅检验重建图与已知降质模型的一致性，残差小不等于与真实原图一致。</p>
+  </section>
+</main>
+<script src="/web/app.js"></script>
+</body>
+</html>

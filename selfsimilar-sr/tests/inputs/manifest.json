@@ -1,0 +1,54 @@
+[
+  {
+    "scene": "panes",
+    "hr": "/workspace/selfsimilar-sr/tests/inputs/panes_HR.png",
+    "lr": "/workspace/selfsimilar-sr/tests/inputs/panes_LR.png",
+    "hrSize": [
+      256,
+      256
+    ],
+    "lrSize": [
+      128,
+      128
+    ]
+  },
+  {
+    "scene": "thinlines",
+    "hr": "/workspace/selfsimilar-sr/tests/inputs/thinlines_HR.png",
+    "lr": "/workspace/selfsimilar-sr/tests/inputs/thinlines_LR.png",
+    "hrSize": [
+      256,
+      256
+    ],
+    "lrSize": [
+      128,
+      128
+    ]
+  },
+  {
+    "scene": "texture",
+    "hr": "/workspace/selfsimilar-sr/tests/inputs/texture_HR.png",
+    "lr": "/workspace/selfsimilar-sr/tests/inputs/texture_LR.png",
+    "hrSize": [
+      256,
+      256
+    ],
+    "lrSize": [
+      128,
+      128
+    ]
+  },
+  {
+    "scene": "unique",
+    "hr": "/workspace/selfsimilar-sr/tests/inputs/unique_HR.png",
+    "lr": "/workspace/selfsimilar-sr/tests/inputs/unique_LR.png",
+    "hrSize": [
+      256,
+      256
+    ],
+    "lrSize": [
+      128,
+      128
+    ]
+  }
+]

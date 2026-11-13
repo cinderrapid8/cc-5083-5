@@ -1,0 +1,190 @@
+{
+  "input": "/workspace/selfsimilar-sr/tests/inputs/unique_LR.png",
+  "scale": 2,
+  "rows": [
+    {
+      "param": "confidenceThreshold",
+      "value": 0.2,
+      "elapsedMs": 6976,
+      "residualRMS": 0.0663,
+      "meanConfidence": 0.5984,
+      "transferFraction": 1
+    },
+    {
+      "param": "confidenceThreshold",
+      "value": 0.35,
+      "elapsedMs": 6578,
+      "residualRMS": 0.0663,
+      "meanConfidence": 0.5984,
+      "transferFraction": 1
+    },
+    {
+      "param": "confidenceThreshold",
+      "value": 0.45,
+      "elapsedMs": 6816,
+      "residualRMS": 0.0658,
+      "meanConfidence": 0.5984,
+      "transferFraction": 0.8498
+    },
+    {
+      "param": "confidenceThreshold",
+      "value": 0.6,
+      "elapsedMs": 6485,
+      "residualRMS": 0.0658,
+      "meanConfidence": 0.5984,
+      "transferFraction": 0.4955
+    },
+    {
+      "param": "confidenceThreshold",
+      "value": 0.75,
+      "elapsedMs": 6612,
+      "residualRMS": 0.066,
+      "meanConfidence": 0.5984,
+      "transferFraction": 0.1606
+    },
+    {
+      "param": "patchSize",
+      "value": 3,
+      "elapsedMs": 6459,
+      "residualRMS": 0.066,
+      "meanConfidence": 0.5284,
+      "transferFraction": 0.7247
+    },
+    {
+      "param": "patchSize",
+      "value": 5,
+      "elapsedMs": 6927,
+      "residualRMS": 0.0658,
+      "meanConfidence": 0.5984,
+      "transferFraction": 0.8498
+    },
+    {
+      "param": "patchSize",
+      "value": 7,
+      "elapsedMs": 7153,
+      "residualRMS": 0.0658,
+      "meanConfidence": 0.7336,
+      "transferFraction": 0.9821
+    },
+    {
+      "param": "pyramidLevels",
+      "value": 1,
+      "elapsedMs": 2757,
+      "residualRMS": 0.0659,
+      "meanConfidence": 0.5875,
+      "transferFraction": 0.7358
+    },
+    {
+      "param": "pyramidLevels",
+      "value": 2,
+      "elapsedMs": 4860,
+      "residualRMS": 0.0658,
+      "meanConfidence": 0.5991,
+      "transferFraction": 0.8495
+    },
+    {
+      "param": "pyramidLevels",
+      "value": 3,
+      "elapsedMs": 6869,
+      "residualRMS": 0.0658,
+      "meanConfidence": 0.5984,
+      "transferFraction": 0.8498
+    },
+    {
+      "param": "rotationPenalty_90",
+      "value": 0,
+      "elapsedMs": 6653,
+      "residualRMS": 0.0659,
+      "meanConfidence": 0.6001,
+      "transferFraction": 0.8786
+    },
+    {
+      "param": "rotationPenalty_90",
+      "value": 3,
+      "elapsedMs": 6919,
+      "residualRMS": 0.0659,
+      "meanConfidence": 0.5982,
+      "transferFraction": 0.8539
+    },
+    {
+      "param": "rotationPenalty_90",
+      "value": 6,
+      "elapsedMs": 6501,
+      "residualRMS": 0.0658,
+      "meanConfidence": 0.5984,
+      "transferFraction": 0.8498
+    },
+    {
+      "param": "rotationPenalty_90",
+      "value": 12,
+      "elapsedMs": 6866,
+      "residualRMS": 0.0658,
+      "meanConfidence": 0.5991,
+      "transferFraction": 0.8488
+    },
+    {
+      "param": "brightnessWeight",
+      "value": 0,
+      "elapsedMs": 6621,
+      "residualRMS": 0.0659,
+      "meanConfidence": 0.6193,
+      "transferFraction": 0.6342
+    },
+    {
+      "param": "brightnessWeight",
+      "value": 0.2,
+      "elapsedMs": 6752,
+      "residualRMS": 0.066,
+      "meanConfidence": 0.5909,
+      "transferFraction": 0.8074
+    },
+    {
+      "param": "brightnessWeight",
+      "value": 0.35,
+      "elapsedMs": 6525,
+      "residualRMS": 0.0658,
+      "meanConfidence": 0.5984,
+      "transferFraction": 0.8498
+    },
+    {
+      "param": "brightnessWeight",
+      "value": 0.8,
+      "elapsedMs": 6794,
+      "residualRMS": 0.0659,
+      "meanConfidence": 0.611,
+      "transferFraction": 0.8773
+    },
+    {
+      "param": "scalePenalty",
+      "value": 0,
+      "elapsedMs": 6620,
+      "residualRMS": 0.0658,
+      "meanConfidence": 0.6095,
+      "transferFraction": 0.8707
+    },
+    {
+      "param": "scalePenalty",
+      "value": 1.5,
+      "elapsedMs": 6548,
+      "residualRMS": 0.0658,
+      "meanConfidence": 0.6029,
+      "transferFraction": 0.8635
+    },
+    {
+      "param": "scalePenalty",
+      "value": 3,
+      "elapsedMs": 6527,
+      "residualRMS": 0.0658,
+      "meanConfidence": 0.5984,
+      "transferFraction": 0.8498
+    },
+    {
+      "param": "scalePenalty",
+      "value": 6,
+      "elapsedMs": 6800,
+      "residualRMS": 0.0659,
+      "meanConfidence": 0.591,
+      "transferFraction": 0.8049
+    }
+  ]
+}

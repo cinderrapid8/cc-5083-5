@@ -1,0 +1,74 @@
+[
+  {
+    "scene": "panes_LR.png",
+    "scale": 2,
+    "size": [
+      256,
+      256
+    ],
+    "psnrSR": 27.312,
+    "psnrBicubic": 23.38,
+    "gradientErrorSR": 13.1,
+    "gradientErrorBicubic": 13.697,
+    "observationResidualRMS": 0.1482,
+    "observationResidualMax": 1.2614,
+    "meanConfidence": 0.811,
+    "transferFraction": 0.972,
+    "elapsedMs": 7914,
+    "psnrGainVsBicubic": 3.932
+  },
+  {
+    "scene": "thinlines_LR.png",
+    "scale": 2,
+    "size": [
+      256,
+      256
+    ],
+    "psnrSR": 19.274,
+    "psnrBicubic": 17.002,
+    "gradientErrorSR": 20.673,
+    "gradientErrorBicubic": 23.248,
+    "observationResidualRMS": 2.2159,
+    "observationResidualMax": 8.9204,
+    "meanConfidence": 0.579,
+    "transferFraction": 0.757,
+    "elapsedMs": 8922,
+    "psnrGainVsBicubic": 2.272
+  },
+  {
+    "scene": "texture_LR.png",
+    "scale": 2,
+    "size": [
+      256,
+      256
+    ],
+    "psnrSR": 16.333,
+    "psnrBicubic": 15.817,
+    "gradientErrorSR": 59.282,
+    "gradientErrorBicubic": 71.452,
+    "observationResidualRMS": 0.3507,
+    "observationResidualMax": 1.5118,
+    "meanConfidence": 0.461,
+    "transferFraction": 0.519,
+    "elapsedMs": 6548,
+    "psnrGainVsBicubic": 0.516
+  },
+  {
+    "scene": "unique_LR.png",
+    "scale": 2,
+    "size": [
+      256,
+      256
+    ],
+    "psnrSR": 46.161,
+    "psnrBicubic": 45.022,
+    "gradientErrorSR": 0.716,
+    "gradientErrorBicubic": 0.691,
+    "observationResidualRMS": 0.0658,
+    "observationResidualMax": 4.9842,
+    "meanConfidence": 0.598,
+    "transferFraction": 0.85,
+    "elapsedMs": 6887,
+    "psnrGainVsBicubic": 1.139
+  }
+]
