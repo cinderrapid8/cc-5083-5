@@ -1,0 +1,37 @@
+{
+  "scene": "signboard",
+  "scale": 4,
+  "reference": "assets/references/signboard/4x/HR.png",
+  "input": "assets/inputs/signboard/4x/LR.png",
+  "referenceSize": [
+    300,
+    204
+  ],
+  "inputSize": [
+    75,
+    51
+  ],
+  "crop": {
+    "x": 0,
+    "y": 0,
+    "w": 300,
+    "h": 204
+  },
+  "degradation": {
+    "blur": {
+      "kernel": "gaussian",
+      "sigma": 1.3,
+      "edge": "clamp"
+    },
+    "downsample": {
+      "method": "catmull-rom-bicubic",
+      "factor": 4,
+      "grid": "pixel-centre-aligned"
+    },
+    "colour": "sRGB channelwise, applied before engine YCbCr conversion"
+  },
+  "referenceSha256": "fcb12d6c179264e68d951c956569e42fc3c94a06356c736dcfb850343806ff91",
+  "inputSha256": "6c9e5a73cfa8930a17ed2cbeeebe8d98902d1e5a6d8ce9c6423ce0e1c6028fb2",
+  "referencePixelDigest": "d7881941a1f8e698bacc83acc89750177da8b2a6a4345da77333cb2b8fafdd92",
+  "inputPixelDigest": "826eab52a0008207cd64346dd1b280149e6548f775764db1047c97408e057d34"
+}

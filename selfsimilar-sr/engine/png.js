@@ -47,9 +47,9 @@ function readPNG(buffer) {
     for (let x = 0; x < stride; x++) {
       const rawByte = raw[rpos++];
       // Per PNG spec: Sub and Paeth reference the byte bpp positions to the
-      // left; Up and Average reference the byte directly above.
+      // left; Up and Average reference the byte directly above. Average's
+      // left term is the pixel to the left (x - bpp), not the previous byte.
       const a = x >= bpp ? out[lineStart + x - bpp] : 0;
-      const a1 = x > 0 ? out[lineStart + x - 1] : 0;
       const b = prev[x];
       const c = x >= bpp ? prev[x - bpp] : 0;
       let v;
@@ -57,7 +57,7 @@ function readPNG(buffer) {
         case 0: v = rawByte; break;
         case 1: v = rawByte + a; break;
         case 2: v = rawByte + b; break;
-        case 3: v = rawByte + ((a1 + b) >> 1); break;
+        case 3: v = rawByte + ((a + b) >> 1); break;
         case 4: v = rawByte + paethPredictor(a, b, c); break;
         default: throw new Error(`bad filter ${filter}`);
       }
@@ -114,7 +114,9 @@ function writePNG(img) {
       }
     }
     // Adaptive filter selection: choose per-row filter minimizing sum of
-    // absolute bytes. Sub/Paeth use byte offset bpp; Up/Average work on bytes.
+    // absolute bytes. Sub/Paeth/Average all use the pixel at x - bpp as the
+    // left reference because filtering is done independently per byte of a
+    // pixel, using the reconstructed previous byte *of the same pixel*.
     const candidates = [];
     for (let f = 0; f < 5; f++) {
       const buf = Buffer.alloc(stride);      // filtered (stored) bytes
@@ -122,7 +124,6 @@ function writePNG(img) {
       let cost = 0;
       for (let x = 0; x < stride; x++) {
         const a = x >= bpp ? recon[x - bpp] : 0;
-        const a1 = x > 0 ? recon[x - 1] : 0;
         const b = prev[x];
         const c = x >= bpp ? prev[x - bpp] : 0;
         let pred;
@@ -130,7 +131,7 @@ function writePNG(img) {
           case 0: pred = 0; break;
           case 1: pred = a; break;
           case 2: pred = b; break;
-          case 3: pred = (a1 + b) >> 1; break;
+          case 3: pred = (a + b) >> 1; break;
           default: pred = paethPredictor(a, b, c);
         }
         const d = (line[x] - pred) & 255;

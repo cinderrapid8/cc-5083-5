@@ -1,0 +1,37 @@
+{
+  "scene": "randomfield",
+  "scale": 2,
+  "reference": "assets/references/randomfield/2x/HR.png",
+  "input": "assets/inputs/randomfield/2x/LR.png",
+  "referenceSize": [
+    288,
+    192
+  ],
+  "inputSize": [
+    144,
+    96
+  ],
+  "crop": {
+    "x": 0,
+    "y": 0,
+    "w": 288,
+    "h": 192
+  },
+  "degradation": {
+    "blur": {
+      "kernel": "gaussian",
+      "sigma": 1,
+      "edge": "clamp"
+    },
+    "downsample": {
+      "method": "catmull-rom-bicubic",
+      "factor": 2,
+      "grid": "pixel-centre-aligned"
+    },
+    "colour": "sRGB channelwise, applied before engine YCbCr conversion"
+  },
+  "referenceSha256": "fcb699517a67656992eabfeaa7b14c3bd1a20a810a23c695253e711e0df8d52b",
+  "inputSha256": "9664ac48c8ff58b34048ca58035ca87f3a73dea42d85ba17cc0607e8b416ad38",
+  "referencePixelDigest": "e19016bb9fc2861841db7b1d813645a44a1856e90dfc2dc95f03a8637cff909f",
+  "inputPixelDigest": "511fca95e67eb063a9a825d6f7d9d7ec743f3464aa0de336e1ce7125ff8ddf0b"
+}

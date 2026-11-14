@@ -4,7 +4,12 @@
   "description": "Single-image self-similarity super-resolution with explicit candidate costs, confidence-gated detail transfer and observation-residual checks. Zero runtime dependencies.",
   "main": "engine/index.js",
   "scripts": {
-    "gui": "node cli/server.js",
+    "gui": "node cli/server.js 8123",
+    "assets": "node tools/build_assets.js",
+    "verify": "node tools/verify.js",
+    "eval": "node eval/run_suite.js",
+    "eval:one": "node eval/run_eval.js",
+    "diff": "node eval/make_diff.js",
     "test-images": "node tests/make_test_images.js",
     "evaluate": "node tests/evaluate.js",
     "reproduce": "node tests/reproduce.js",

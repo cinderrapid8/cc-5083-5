@@ -1,0 +1,639 @@
+{
+  "generatedBy": "tools/build_assets.js",
+  "rebuild": "node tools/build_assets.js --clean",
+  "verify": "node tools/verify.js",
+  "degradationModel": "gaussian blur (clamped edges) -> catmull-rom bicubic downsample, integer factor",
+  "isolation": "references/ and inputs/ are separate trees; eval/run_eval.js refuses any file whose pixel digest is sealed in ledger.json; the GUI never serves references/",
+  "scenes": [
+    {
+      "name": "facade",
+      "family": "repeated-architecture",
+      "size": [
+        288,
+        192
+      ],
+      "editables": {
+        "spec": "assets/scenes/facade.json",
+        "svg": "assets/scenes/facade.svg"
+      },
+      "regions": [
+        {
+          "name": "window-band",
+          "kind": "repeated",
+          "rect": [
+            12,
+            12,
+            264,
+            120
+          ],
+          "note": "strong panel repetition; expectation is a clear gain"
+        },
+        {
+          "name": "decoy-cell-A",
+          "kind": "decoy",
+          "rect": [
+            120,
+            12,
+            48,
+            60
+          ],
+          "note": "highlight mirrored and mullion shifted below LR resolution"
+        },
+        {
+          "name": "decoy-cell-B",
+          "kind": "decoy",
+          "rect": [
+            228,
+            72,
+            48,
+            60
+          ],
+          "note": "extra thin bar exists only at reference resolution"
+        },
+        {
+          "name": "balcony-rail",
+          "kind": "thin-lines",
+          "rect": [
+            12,
+            132,
+            264,
+            24
+          ],
+          "note": "isolated posts; transfer may double thin lines"
+        },
+        {
+          "name": "stucco",
+          "kind": "random",
+          "rect": [
+            12,
+            156,
+            132,
+            36
+          ],
+          "note": "band-limited noise, no exact repeats"
+        },
+        {
+          "name": "sky",
+          "kind": "untextured",
+          "rect": [
+            0,
+            0,
+            288,
+            12
+          ],
+          "note": "smooth gradient; should fall back everywhere"
+        }
+      ],
+      "scales": [
+        "2x",
+        "3x",
+        "4x"
+      ],
+      "assets": [
+        {
+          "scale": 2,
+          "input": "assets/inputs/facade/2x/LR.png",
+          "reference": "assets/references/facade/2x/HR.png",
+          "recipe": "assets/recipes/facade_2x.json",
+          "referencePixelDigest": "6bf07f793a4a0e93e126ec9c3ffb0d584162fe42f72ae9622617dc17e4931f31",
+          "inputPixelDigest": "678346782ead4546cbf2e783ab3581b3f76d65901cbd479edfdd7ca43f38c6db",
+          "degradation": {
+            "sigma": 1,
+            "kernel": "gaussian",
+            "resample": "catmull-rom-bicubic"
+          }
+        },
+        {
+          "scale": 3,
+          "input": "assets/inputs/facade/3x/LR.png",
+          "reference": "assets/references/facade/3x/HR.png",
+          "recipe": "assets/recipes/facade_3x.json",
+          "referencePixelDigest": "6bf07f793a4a0e93e126ec9c3ffb0d584162fe42f72ae9622617dc17e4931f31",
+          "inputPixelDigest": "570651a94dd519349c330cc753636b073a2163be9e7b5b84dec8fef69e667817",
+          "degradation": {
+            "sigma": 1.15,
+            "kernel": "gaussian",
+            "resample": "catmull-rom-bicubic"
+          }
+        },
+        {
+          "scale": 4,
+          "input": "assets/inputs/facade/4x/LR.png",
+          "reference": "assets/references/facade/4x/HR.png",
+          "recipe": "assets/recipes/facade_4x.json",
+          "referencePixelDigest": "6bf07f793a4a0e93e126ec9c3ffb0d584162fe42f72ae9622617dc17e4931f31",
+          "inputPixelDigest": "bc5bc6be899bd9d5d5a21db2cbcdce458ff1448afe98b3e5b537307b92455ea0",
+          "degradation": {
+            "sigma": 1.3,
+            "kernel": "gaussian",
+            "resample": "catmull-rom-bicubic"
+          }
+        }
+      ]
+    },
+    {
+      "name": "linechart",
+      "family": "thin-lines",
+      "size": [
+        288,
+        192
+      ],
+      "editables": {
+        "spec": "assets/scenes/linechart.json",
+        "svg": "assets/scenes/linechart.svg"
+      },
+      "regions": [
+        {
+          "name": "rule-stack",
+          "kind": "thin-lines",
+          "rect": [
+            12,
+            12,
+            264,
+            72
+          ],
+          "note": "irregular rules; a copied period would be wrong"
+        },
+        {
+          "name": "tick-comb",
+          "kind": "thin-lines",
+          "rect": [
+            12,
+            84,
+            132,
+            48
+          ],
+          "note": "vertical ticks, mixed thickness"
+        },
+        {
+          "name": "hairline-circle",
+          "kind": "isolated",
+          "rect": [
+            156,
+            72,
+            72,
+            72
+          ],
+          "note": "single unique object, no neighbour to borrow from"
+        },
+        {
+          "name": "decoy-dash",
+          "kind": "decoy",
+          "rect": [
+            108,
+            144,
+            48,
+            12
+          ],
+          "note": "middle dash has a 1.2 px break below LR resolution"
+        },
+        {
+          "name": "diagonal-cross",
+          "kind": "isolated",
+          "rect": [
+            156,
+            72,
+            108,
+            72
+          ],
+          "note": "1 px diagonals; transfer often stair-steps or doubles them"
+        },
+        {
+          "name": "blank-ground",
+          "kind": "untextured",
+          "rect": [
+            12,
+            180,
+            264,
+            12
+          ],
+          "note": "empty paper; should fall back"
+        }
+      ],
+      "scales": [
+        "2x",
+        "3x",
+        "4x"
+      ],
+      "assets": [
+        {
+          "scale": 2,
+          "input": "assets/inputs/linechart/2x/LR.png",
+          "reference": "assets/references/linechart/2x/HR.png",
+          "recipe": "assets/recipes/linechart_2x.json",
+          "referencePixelDigest": "4ace868af9769e7008811b0118b52bd3c4529cc0fb6ca33a9b0d95fc42caa2ae",
+          "inputPixelDigest": "20731ef0c6b79edc9ed2516a7fea3e6089595153347f88278583ac28b80359b8",
+          "degradation": {
+            "sigma": 1,
+            "kernel": "gaussian",
+            "resample": "catmull-rom-bicubic"
+          }
+        },
+        {
+          "scale": 3,
+          "input": "assets/inputs/linechart/3x/LR.png",
+          "reference": "assets/references/linechart/3x/HR.png",
+          "recipe": "assets/recipes/linechart_3x.json",
+          "referencePixelDigest": "4ace868af9769e7008811b0118b52bd3c4529cc0fb6ca33a9b0d95fc42caa2ae",
+          "inputPixelDigest": "8e23b8aebf08eb201300508b26e81085ae7460af2ba85be3056ee744536e9916",
+          "degradation": {
+            "sigma": 1.15,
+            "kernel": "gaussian",
+            "resample": "catmull-rom-bicubic"
+          }
+        },
+        {
+          "scale": 4,
+          "input": "assets/inputs/linechart/4x/LR.png",
+          "reference": "assets/references/linechart/4x/HR.png",
+          "recipe": "assets/recipes/linechart_4x.json",
+          "referencePixelDigest": "4ace868af9769e7008811b0118b52bd3c4529cc0fb6ca33a9b0d95fc42caa2ae",
+          "inputPixelDigest": "a63ce50d3f2a402b64f6ec2311ebeadb435ad794a2b9665530882a4696a73611",
+          "degradation": {
+            "sigma": 1.3,
+            "kernel": "gaussian",
+            "resample": "catmull-rom-bicubic"
+          }
+        }
+      ]
+    },
+    {
+      "name": "masonry",
+      "family": "repeated-architecture",
+      "size": [
+        264,
+        192
+      ],
+      "editables": {
+        "spec": "assets/scenes/masonry.json",
+        "svg": "assets/scenes/masonry.svg"
+      },
+      "regions": [
+        {
+          "name": "brick-courses",
+          "kind": "repeated",
+          "rect": [
+            0,
+            12,
+            264,
+            144
+          ],
+          "note": "offset courses; strong coarse repetition but many near-duplicates"
+        },
+        {
+          "name": "decoy-brick-1",
+          "kind": "decoy",
+          "rect": [
+            84,
+            36,
+            36,
+            24
+          ],
+          "note": "mottling diagonal reversed and a hairline notch, both below LR resolution"
+        },
+        {
+          "name": "decoy-brick-2",
+          "kind": "decoy",
+          "rect": [
+            144,
+            84,
+            36,
+            24
+          ],
+          "note": "second decoy: reversed mottling plus sub-LR notch"
+        },
+        {
+          "name": "decoy-brick-3",
+          "kind": "decoy",
+          "rect": [
+            36,
+            108,
+            36,
+            24
+          ],
+          "note": "third decoy: same coarse brick, different micro-texture"
+        },
+        {
+          "name": "mortar-band",
+          "kind": "thin-lines",
+          "rect": [
+            0,
+            156,
+            264,
+            36
+          ],
+          "note": "1.5 px joint line on low-contrast boundary"
+        },
+        {
+          "name": "washed-patch",
+          "kind": "random",
+          "rect": [
+            168,
+            156,
+            96,
+            36
+          ],
+          "note": "band-limited washed area; nothing exact to borrow"
+        },
+        {
+          "name": "sky-strip",
+          "kind": "untextured",
+          "rect": [
+            0,
+            0,
+            264,
+            12
+          ],
+          "note": "smooth sky; should fall back"
+        }
+      ],
+      "scales": [
+        "2x",
+        "3x",
+        "4x"
+      ],
+      "assets": [
+        {
+          "scale": 2,
+          "input": "assets/inputs/masonry/2x/LR.png",
+          "reference": "assets/references/masonry/2x/HR.png",
+          "recipe": "assets/recipes/masonry_2x.json",
+          "referencePixelDigest": "cbc4caacb75aa92095390cf20d724c969e139d752db2b87fa661e4fc303d41b1",
+          "inputPixelDigest": "fc40be2710f31363b8fdb3e282e59d71902474446fe609728a1844c3642d51a0",
+          "degradation": {
+            "sigma": 1,
+            "kernel": "gaussian",
+            "resample": "catmull-rom-bicubic"
+          }
+        },
+        {
+          "scale": 3,
+          "input": "assets/inputs/masonry/3x/LR.png",
+          "reference": "assets/references/masonry/3x/HR.png",
+          "recipe": "assets/recipes/masonry_3x.json",
+          "referencePixelDigest": "cbc4caacb75aa92095390cf20d724c969e139d752db2b87fa661e4fc303d41b1",
+          "inputPixelDigest": "3c36b7fbb5dfa889e4d734ed7a36e93033ad82c1a0a6ed55e3fc96a95537df83",
+          "degradation": {
+            "sigma": 1.15,
+            "kernel": "gaussian",
+            "resample": "catmull-rom-bicubic"
+          }
+        },
+        {
+          "scale": 4,
+          "input": "assets/inputs/masonry/4x/LR.png",
+          "reference": "assets/references/masonry/4x/HR.png",
+          "recipe": "assets/recipes/masonry_4x.json",
+          "referencePixelDigest": "cbc4caacb75aa92095390cf20d724c969e139d752db2b87fa661e4fc303d41b1",
+          "inputPixelDigest": "d3c14a42de29216322cf51915815210e0cf8faafde87675a3c9333cca65a015b",
+          "degradation": {
+            "sigma": 1.3,
+            "kernel": "gaussian",
+            "resample": "catmull-rom-bicubic"
+          }
+        }
+      ]
+    },
+    {
+      "name": "randomfield",
+      "family": "random-unique",
+      "size": [
+        288,
+        192
+      ],
+      "editables": {
+        "spec": "assets/scenes/randomfield.json",
+        "svg": "assets/scenes/randomfield.svg"
+      },
+      "regions": [
+        {
+          "name": "unique-patch-A",
+          "kind": "random",
+          "rect": [
+            0,
+            0,
+            144,
+            84
+          ],
+          "note": "band-limited unique field; no exact repeat"
+        },
+        {
+          "name": "unique-patch-B",
+          "kind": "random",
+          "rect": [
+            144,
+            0,
+            144,
+            84
+          ],
+          "note": "different seed and scale"
+        },
+        {
+          "name": "grain-heavy",
+          "kind": "random",
+          "rect": [
+            0,
+            84,
+            144,
+            84
+          ],
+          "note": "per-pixel grain dominates; detail is unsupported by the observation"
+        },
+        {
+          "name": "speckle-field",
+          "kind": "random",
+          "rect": [
+            144,
+            84,
+            144,
+            84
+          ],
+          "note": "irregular speckle plus faint unique curve"
+        },
+        {
+          "name": "faint-curve-A",
+          "kind": "isolated",
+          "rect": [
+            24,
+            84,
+            108,
+            60
+          ],
+          "note": "single thin curve on noise; transfer usually copies wrong segment"
+        }
+      ],
+      "scales": [
+        "2x",
+        "3x",
+        "4x"
+      ],
+      "assets": [
+        {
+          "scale": 2,
+          "input": "assets/inputs/randomfield/2x/LR.png",
+          "reference": "assets/references/randomfield/2x/HR.png",
+          "recipe": "assets/recipes/randomfield_2x.json",
+          "referencePixelDigest": "e19016bb9fc2861841db7b1d813645a44a1856e90dfc2dc95f03a8637cff909f",
+          "inputPixelDigest": "511fca95e67eb063a9a825d6f7d9d7ec743f3464aa0de336e1ce7125ff8ddf0b",
+          "degradation": {
+            "sigma": 1,
+            "kernel": "gaussian",
+            "resample": "catmull-rom-bicubic"
+          }
+        },
+        {
+          "scale": 3,
+          "input": "assets/inputs/randomfield/3x/LR.png",
+          "reference": "assets/references/randomfield/3x/HR.png",
+          "recipe": "assets/recipes/randomfield_3x.json",
+          "referencePixelDigest": "e19016bb9fc2861841db7b1d813645a44a1856e90dfc2dc95f03a8637cff909f",
+          "inputPixelDigest": "774d8b754c18d30bce920c86d3501a0742bddacc5bc7158342eb6d56752d5729",
+          "degradation": {
+            "sigma": 1.15,
+            "kernel": "gaussian",
+            "resample": "catmull-rom-bicubic"
+          }
+        },
+        {
+          "scale": 4,
+          "input": "assets/inputs/randomfield/4x/LR.png",
+          "reference": "assets/references/randomfield/4x/HR.png",
+          "recipe": "assets/recipes/randomfield_4x.json",
+          "referencePixelDigest": "e19016bb9fc2861841db7b1d813645a44a1856e90dfc2dc95f03a8637cff909f",
+          "inputPixelDigest": "e1d16d58fd67760c2a95e9f52474094ebe1b499c4f87775aaf20d209c099067d",
+          "degradation": {
+            "sigma": 1.3,
+            "kernel": "gaussian",
+            "resample": "catmull-rom-bicubic"
+          }
+        }
+      ]
+    },
+    {
+      "name": "signboard",
+      "family": "pseudo-text",
+      "size": [
+        300,
+        204
+      ],
+      "editables": {
+        "spec": "assets/scenes/signboard.json",
+        "svg": "assets/scenes/signboard.svg"
+      },
+      "regions": [
+        {
+          "name": "glyph-row-A",
+          "kind": "pseudo-text",
+          "rect": [
+            24,
+            24,
+            252,
+            48
+          ],
+          "note": "repeated glyph forms; thin terminals lost at LR"
+        },
+        {
+          "name": "decoy-glyph-A",
+          "kind": "decoy",
+          "rect": [
+            132,
+            24,
+            36,
+            48
+          ],
+          "note": "extra terminal below LR resolution"
+        },
+        {
+          "name": "glyph-row-B",
+          "kind": "pseudo-text",
+          "rect": [
+            24,
+            72,
+            252,
+            36
+          ],
+          "note": "larger glyphs; some may transfer reliably"
+        },
+        {
+          "name": "decoy-glyph-B",
+          "kind": "decoy",
+          "rect": [
+            192,
+            72,
+            36,
+            36
+          ],
+          "note": "extra terminal below LR resolution"
+        },
+        {
+          "name": "caption-ticks",
+          "kind": "thin-lines",
+          "rect": [
+            216,
+            108,
+            60,
+            36
+          ],
+          "note": "isolated 1 px ticks on nearly blank ground"
+        },
+        {
+          "name": "plate-margin",
+          "kind": "untextured",
+          "rect": [
+            24,
+            132,
+            252,
+            12
+          ],
+          "note": "blank plate; should fall back"
+        }
+      ],
+      "scales": [
+        "2x",
+        "3x",
+        "4x"
+      ],
+      "assets": [
+        {
+          "scale": 2,
+          "input": "assets/inputs/signboard/2x/LR.png",
+          "reference": "assets/references/signboard/2x/HR.png",
+          "recipe": "assets/recipes/signboard_2x.json",
+          "referencePixelDigest": "d7881941a1f8e698bacc83acc89750177da8b2a6a4345da77333cb2b8fafdd92",
+          "inputPixelDigest": "9004bd7d021cb61f3488b51b8ffe39f6e46762ad8d9da32945c5010e85a1b1d3",
+          "degradation": {
+            "sigma": 1,
+            "kernel": "gaussian",
+            "resample": "catmull-rom-bicubic"
+          }
+        },
+        {
+          "scale": 3,
+          "input": "assets/inputs/signboard/3x/LR.png",
+          "reference": "assets/references/signboard/3x/HR.png",
+          "recipe": "assets/recipes/signboard_3x.json",
+          "referencePixelDigest": "d7881941a1f8e698bacc83acc89750177da8b2a6a4345da77333cb2b8fafdd92",
+          "inputPixelDigest": "bdb578919122edd743e46a7ffaea020d0972d16f36e2e34e77d22c1efa601597",
+          "degradation": {
+            "sigma": 1.15,
+            "kernel": "gaussian",
+            "resample": "catmull-rom-bicubic"
+          }
+        },
+        {
+          "scale": 4,
+          "input": "assets/inputs/signboard/4x/LR.png",
+          "reference": "assets/references/signboard/4x/HR.png",
+          "recipe": "assets/recipes/signboard_4x.json",
+          "referencePixelDigest": "d7881941a1f8e698bacc83acc89750177da8b2a6a4345da77333cb2b8fafdd92",
+          "inputPixelDigest": "826eab52a0008207cd64346dd1b280149e6548f775764db1047c97408e057d34",
+          "degradation": {
+            "sigma": 1.3,
+            "kernel": "gaussian",
+            "resample": "catmull-rom-bicubic"
+          }
+        }
+      ]
+    }
+  ]
+}

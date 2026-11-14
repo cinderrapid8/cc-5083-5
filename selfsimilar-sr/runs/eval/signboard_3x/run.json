@@ -1,0 +1,115 @@
+{
+  "input": "/workspace/selfsimilar-sr/assets/inputs/signboard/3x/LR.png",
+  "inputSize": [
+    100,
+    68
+  ],
+  "scale": 3,
+  "scene": "signboard",
+  "outputSize": [
+    300,
+    204
+  ],
+  "params": {
+    "patchSize": 5,
+    "patchStride": 6,
+    "pyramidLevels": 3,
+    "pyramidScale": 0.8,
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "shortlist": 10,
+    "brightnessWeight": 0.35,
+    "rotationPenalty": {
+      "0": 0,
+      "90": 6,
+      "180": 8,
+      "270": 6
+    },
+    "scalePenalty": 3,
+    "residualScale": 120,
+    "flatEnergy": 200,
+    "wMargin": 0.45,
+    "wFit": 0.35,
+    "wStructure": 0.2,
+    "confidenceThreshold": 0.45,
+    "backProjectionIters": 3,
+    "bpStep": 0.8,
+    "degradeSigma": 1,
+    "keepCandidates": 6
+  },
+  "defaults": {
+    "patchSize": 5,
+    "patchStride": 2,
+    "pyramidLevels": 3,
+    "pyramidScale": 0.8,
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "shortlist": 24,
+    "brightnessWeight": 0.35,
+    "rotationPenalty": {
+      "0": 0,
+      "90": 6,
+      "180": 8,
+      "270": 6
+    },
+    "scalePenalty": 3,
+    "residualScale": 120,
+    "flatEnergy": 200,
+    "wMargin": 0.45,
+    "wFit": 0.35,
+    "wStructure": 0.2,
+    "confidenceThreshold": 0.45,
+    "backProjectionIters": 8,
+    "bpStep": 0.8,
+    "degradeSigma": 1,
+    "keepCandidates": 6
+  },
+  "provenance": {
+    "builtAsset": true,
+    "inputPixelDigest": "bdb578919122edd743e46a7ffaea020d0972d16f36e2e34e77d22c1efa601597",
+    "expectedInputPixelDigest": "bdb578919122edd743e46a7ffaea020d0972d16f36e2e34e77d22c1efa601597"
+  },
+  "diagnostics": {
+    "elapsedMs": 244,
+    "residualRMS": 0.9032,
+    "residualMax": 7.976,
+    "steps": [
+      {
+        "factor": 2,
+        "positions": 204,
+        "backProjectionRMS": [
+          10.9609,
+          7.1092,
+          4.9719
+        ]
+      }
+    ],
+    "rgbBackProjectionRMS": [
+      [
+        6.5276,
+        0.9592,
+        0.4522
+      ],
+      [
+        2.7726,
+        0.6591,
+        0.3296
+      ],
+      [
+        1.2654,
+        0.5613,
+        0.2988
+      ]
+    ]
+  },
+  "engine": "selfsimilar-sr (zero-dependency, deterministic, no RNG in pipeline)",
+  "node": "v22.23.4"
+}

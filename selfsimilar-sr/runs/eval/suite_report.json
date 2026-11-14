@@ -1,0 +1,222 @@
+{
+  "note": "Every scene/scale pair is included, including cases where self-similar transfer is worse than bicubic or copies detail into a decoy region.",
+  "runner": "eval/run_eval.js (input-only; refuses sealed reference digests)",
+  "params": {
+    "patchStride": 6,
+    "shortlist": 10,
+    "backProjectionIters": 3,
+    "pyramidLevels": 3
+  },
+  "rows": [
+    {
+      "scene": "facade",
+      "scale": 2,
+      "psnrSR": 22.973,
+      "psnrBicubic": 21.583,
+      "psnrGain": 1.391,
+      "gradientErrorGain": -0.038,
+      "residualRMS": 0.8168,
+      "wrongTransferBlocks": 6,
+      "regionsWorse": [],
+      "worstRegions": []
+    },
+    {
+      "scene": "facade",
+      "scale": 3,
+      "psnrSR": 20.61,
+      "psnrBicubic": 20.027,
+      "psnrGain": 0.584,
+      "gradientErrorGain": -0.74,
+      "residualRMS": 0.6768,
+      "wrongTransferBlocks": 2,
+      "regionsWorse": [
+        "sky"
+      ],
+      "worstRegions": [
+        "sky (-1.70 dB)"
+      ]
+    },
+    {
+      "scene": "facade",
+      "scale": 4,
+      "psnrSR": 19.026,
+      "psnrBicubic": 18.848,
+      "psnrGain": 0.179,
+      "gradientErrorGain": -0.647,
+      "residualRMS": 1.1307,
+      "wrongTransferBlocks": 2,
+      "regionsWorse": [
+        "stucco",
+        "sky"
+      ],
+      "worstRegions": [
+        "sky (-1.23 dB)",
+        "stucco (-0.14 dB)"
+      ]
+    },
+    {
+      "scene": "linechart",
+      "scale": 2,
+      "psnrSR": 23.297,
+      "psnrBicubic": 21.367,
+      "psnrGain": 1.93,
+      "gradientErrorGain": 0.736,
+      "residualRMS": 1.3729,
+      "wrongTransferBlocks": 5,
+      "regionsWorse": [
+        "blank-ground"
+      ],
+      "worstRegions": [
+        "blank-ground (-1.60 dB)"
+      ]
+    },
+    {
+      "scene": "linechart",
+      "scale": 3,
+      "psnrSR": 20.549,
+      "psnrBicubic": 20.104,
+      "psnrGain": 0.445,
+      "gradientErrorGain": -0.962,
+      "residualRMS": 0.8548,
+      "wrongTransferBlocks": 13,
+      "regionsWorse": [
+        "blank-ground"
+      ],
+      "worstRegions": [
+        "blank-ground (-1.20 dB)"
+      ]
+    },
+    {
+      "scene": "linechart",
+      "scale": 4,
+      "psnrSR": 19.017,
+      "psnrBicubic": 18.858,
+      "psnrGain": 0.158,
+      "gradientErrorGain": -0.625,
+      "residualRMS": 1.138,
+      "wrongTransferBlocks": 2,
+      "regionsWorse": [
+        "blank-ground"
+      ],
+      "worstRegions": [
+        "blank-ground (-1.08 dB)"
+      ]
+    },
+    {
+      "scene": "masonry",
+      "scale": 2,
+      "psnrSR": 28.397,
+      "psnrBicubic": 26.848,
+      "psnrGain": 1.549,
+      "gradientErrorGain": -0.767,
+      "residualRMS": 1.7545,
+      "wrongTransferBlocks": 30,
+      "regionsWorse": [],
+      "worstRegions": []
+    },
+    {
+      "scene": "masonry",
+      "scale": 3,
+      "psnrSR": 26.017,
+      "psnrBicubic": 25.235,
+      "psnrGain": 0.782,
+      "gradientErrorGain": -0.714,
+      "residualRMS": 1.5239,
+      "wrongTransferBlocks": 0,
+      "regionsWorse": [],
+      "worstRegions": []
+    },
+    {
+      "scene": "masonry",
+      "scale": 4,
+      "psnrSR": 23.031,
+      "psnrBicubic": 23.127,
+      "psnrGain": -0.096,
+      "gradientErrorGain": -1.18,
+      "residualRMS": 1.233,
+      "wrongTransferBlocks": 38,
+      "regionsWorse": [
+        "brick-courses",
+        "decoy-brick-2",
+        "sky-strip"
+      ],
+      "worstRegions": [
+        "decoy-brick-2 (-0.11 dB)",
+        "sky-strip (-0.10 dB)",
+        "brick-courses (-0.10 dB)"
+      ]
+    },
+    {
+      "scene": "randomfield",
+      "scale": 2,
+      "psnrSR": 24.754,
+      "psnrBicubic": 24.201,
+      "psnrGain": 0.553,
+      "gradientErrorGain": 3.422,
+      "residualRMS": 0.5328,
+      "wrongTransferBlocks": 0,
+      "regionsWorse": [],
+      "worstRegions": []
+    },
+    {
+      "scene": "randomfield",
+      "scale": 3,
+      "psnrSR": 23.951,
+      "psnrBicubic": 23.799,
+      "psnrGain": 0.153,
+      "gradientErrorGain": 1.494,
+      "residualRMS": 0.2316,
+      "wrongTransferBlocks": 0,
+      "regionsWorse": [],
+      "worstRegions": []
+    },
+    {
+      "scene": "randomfield",
+      "scale": 4,
+      "psnrSR": 23.564,
+      "psnrBicubic": 23.513,
+      "psnrGain": 0.051,
+      "gradientErrorGain": 0.78,
+      "residualRMS": 0.5006,
+      "wrongTransferBlocks": 1,
+      "regionsWorse": [],
+      "worstRegions": []
+    },
+    {
+      "scene": "signboard",
+      "scale": 2,
+      "psnrSR": 22.493,
+      "psnrBicubic": 20.791,
+      "psnrGain": 1.702,
+      "gradientErrorGain": -0.175,
+      "residualRMS": 1.1382,
+      "wrongTransferBlocks": 13,
+      "regionsWorse": [],
+      "worstRegions": []
+    },
+    {
+      "scene": "signboard",
+      "scale": 3,
+      "psnrSR": 20.02,
+      "psnrBicubic": 19.177,
+      "psnrGain": 0.843,
+      "gradientErrorGain": -0.81,
+      "residualRMS": 0.9032,
+      "wrongTransferBlocks": 4,
+      "regionsWorse": [],
+      "worstRegions": []
+    },
+    {
+      "scene": "signboard",
+      "scale": 4,
+      "psnrSR": 18.057,
+      "psnrBicubic": 17.978,
+      "psnrGain": 0.078,
+      "gradientErrorGain": -1.815,
+      "residualRMS": 1.7715,
+      "wrongTransferBlocks": 3,
+      "regionsWorse": [],
+      "worstRegions": []
+    }
+  ]
+}

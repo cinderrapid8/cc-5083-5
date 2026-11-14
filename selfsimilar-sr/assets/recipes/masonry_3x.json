@@ -1,0 +1,37 @@
+{
+  "scene": "masonry",
+  "scale": 3,
+  "reference": "assets/references/masonry/3x/HR.png",
+  "input": "assets/inputs/masonry/3x/LR.png",
+  "referenceSize": [
+    264,
+    192
+  ],
+  "inputSize": [
+    88,
+    64
+  ],
+  "crop": {
+    "x": 0,
+    "y": 0,
+    "w": 264,
+    "h": 192
+  },
+  "degradation": {
+    "blur": {
+      "kernel": "gaussian",
+      "sigma": 1.15,
+      "edge": "clamp"
+    },
+    "downsample": {
+      "method": "catmull-rom-bicubic",
+      "factor": 3,
+      "grid": "pixel-centre-aligned"
+    },
+    "colour": "sRGB channelwise, applied before engine YCbCr conversion"
+  },
+  "referenceSha256": "2aa755f0244b9c5419db266ee8d830f1d7cf3be71229b47ca3552c911526f1bf",
+  "inputSha256": "cb3c5840b9e5c8d78baee357fd6d879e5ed6d4654c7ac31d53c0f068a72001a2",
+  "referencePixelDigest": "cbc4caacb75aa92095390cf20d724c969e139d752db2b87fa661e4fc303d41b1",
+  "inputPixelDigest": "3c36b7fbb5dfa889e4d734ed7a36e93033ad82c1a0a6ed55e3fc96a95537df83"
+}

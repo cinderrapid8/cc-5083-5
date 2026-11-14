@@ -1,0 +1,124 @@
+{
+  "input": "/workspace/selfsimilar-sr/assets/inputs/facade/4x/LR.png",
+  "inputSize": [
+    72,
+    48
+  ],
+  "scale": 4,
+  "scene": "facade",
+  "outputSize": [
+    288,
+    192
+  ],
+  "params": {
+    "patchSize": 5,
+    "patchStride": 6,
+    "pyramidLevels": 3,
+    "pyramidScale": 0.8,
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "shortlist": 10,
+    "brightnessWeight": 0.35,
+    "rotationPenalty": {
+      "0": 0,
+      "90": 6,
+      "180": 8,
+      "270": 6
+    },
+    "scalePenalty": 3,
+    "residualScale": 120,
+    "flatEnergy": 200,
+    "wMargin": 0.45,
+    "wFit": 0.35,
+    "wStructure": 0.2,
+    "confidenceThreshold": 0.45,
+    "backProjectionIters": 3,
+    "bpStep": 0.8,
+    "degradeSigma": 1,
+    "keepCandidates": 6
+  },
+  "defaults": {
+    "patchSize": 5,
+    "patchStride": 2,
+    "pyramidLevels": 3,
+    "pyramidScale": 0.8,
+    "rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "shortlist": 24,
+    "brightnessWeight": 0.35,
+    "rotationPenalty": {
+      "0": 0,
+      "90": 6,
+      "180": 8,
+      "270": 6
+    },
+    "scalePenalty": 3,
+    "residualScale": 120,
+    "flatEnergy": 200,
+    "wMargin": 0.45,
+    "wFit": 0.35,
+    "wStructure": 0.2,
+    "confidenceThreshold": 0.45,
+    "backProjectionIters": 8,
+    "bpStep": 0.8,
+    "degradeSigma": 1,
+    "keepCandidates": 6
+  },
+  "provenance": {
+    "builtAsset": true,
+    "inputPixelDigest": "bc5bc6be899bd9d5d5a21db2cbcdce458ff1448afe98b3e5b537307b92455ea0",
+    "expectedInputPixelDigest": "bc5bc6be899bd9d5d5a21db2cbcdce458ff1448afe98b3e5b537307b92455ea0"
+  },
+  "diagnostics": {
+    "elapsedMs": 972,
+    "residualRMS": 1.1307,
+    "residualMax": 5.0724,
+    "steps": [
+      {
+        "factor": 2,
+        "positions": 117,
+        "backProjectionRMS": [
+          11.0721,
+          7.3042,
+          5.115
+        ]
+      },
+      {
+        "factor": 4,
+        "positions": 425,
+        "backProjectionRMS": [
+          5.8056,
+          2.703,
+          1.4315
+        ]
+      }
+    ],
+    "rgbBackProjectionRMS": [
+      [
+        18.9302,
+        0.6423,
+        0.4262
+      ],
+      [
+        7.1323,
+        0.2871,
+        0.2191
+      ],
+      [
+        2.7691,
+        0.2807,
+        0.2171
+      ]
+    ]
+  },
+  "engine": "selfsimilar-sr (zero-dependency, deterministic, no RNG in pipeline)",
+  "node": "v22.23.4"
+}

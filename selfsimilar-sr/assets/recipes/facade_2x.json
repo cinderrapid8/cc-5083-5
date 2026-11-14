@@ -1,0 +1,37 @@
+{
+  "scene": "facade",
+  "scale": 2,
+  "reference": "assets/references/facade/2x/HR.png",
+  "input": "assets/inputs/facade/2x/LR.png",
+  "referenceSize": [
+    288,
+    192
+  ],
+  "inputSize": [
+    144,
+    96
+  ],
+  "crop": {
+    "x": 0,
+    "y": 0,
+    "w": 288,
+    "h": 192
+  },
+  "degradation": {
+    "blur": {
+      "kernel": "gaussian",
+      "sigma": 1,
+      "edge": "clamp"
+    },
+    "downsample": {
+      "method": "catmull-rom-bicubic",
+      "factor": 2,
+      "grid": "pixel-centre-aligned"
+    },
+    "colour": "sRGB channelwise, applied before engine YCbCr conversion"
+  },
+  "referenceSha256": "07fbc86dd36efe735005b12464b38a0e85091537cc9f6268df1a57351750736e",
+  "inputSha256": "168978ce25e6b8faf4617e9d43cd3ffab4105d0e839f144cb6af997dc351660e",
+  "referencePixelDigest": "6bf07f793a4a0e93e126ec9c3ffb0d584162fe42f72ae9622617dc17e4931f31",
+  "inputPixelDigest": "678346782ead4546cbf2e783ab3581b3f76d65901cbd479edfdd7ca43f38c6db"
+}

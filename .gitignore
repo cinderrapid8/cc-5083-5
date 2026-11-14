@@ -23,3 +23,6 @@ __pycache__/
 *.log
 .env
 .env.*
+
+# Scratch files left by interrupted asset verification
+/selfsimilar-sr/.verify-tmp/

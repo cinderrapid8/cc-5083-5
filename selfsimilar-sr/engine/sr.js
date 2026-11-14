@@ -70,6 +70,9 @@ function paramsWithOverrides(overrides = {}) {
 function buildPyramid(yImage, params) {
   // Level 0 = input luminance. Deeper levels are degraded downscales of the
   // input itself, so the example bank contains only self-derived content.
+  // Each level is built from the previous one, and its effective scale
+  // factor is the product of all downscale ratios so far, which keeps the
+  // scale penalty meaningful when pyramidScale is not 1 / integer.
   const levels = [{ img: yImage, scaleFactor: 1 }];
   let cur = yImage;
   for (let l = 1; l < params.pyramidLevels; l++) {
@@ -141,16 +144,24 @@ function superResolve2x(lrY, params, diagnostics) {
       target: { x: tx, y: ty, size: p },
       confidence,
       targetMean: match.targetMean,
+      targetEnergy: match.targetEnergy,
       candidates: match.candidates.slice(0, params.keepCandidates).map((c) => ({
         level: c.level,
         scaleFactor: Number(c.scaleFactor.toFixed(4)),
         rotation: c.rotation,
+        // Top-left of the matched patch in the rotated view. Together with
+        // `rotation` this is enough to recover the exact pixels the matcher
+        // compared, without rebuilding the rotation buffers.
+        cx: c.cx,
+        cy: c.cy,
+        // Bounding box in source (unrotated) coordinates, for display.
         x: c.x, y: c.y, w: c.w, h: c.h,
         ssdPerPx: Number(c.ssdPerPx.toFixed(4)),
         brightnessDelta: Number(c.brightnessDelta.toFixed(4)),
         rotationPenalty: c.rotationPenalty,
         scalePenalty: Number(c.scalePenalty.toFixed(4)),
         cost: Number(c.cost.toFixed(4)),
+        rank: c.rank,
       })),
     };
     matchIndex.push(record);
@@ -232,6 +243,11 @@ function superResolve2x(lrY, params, diagnostics) {
   diagnostics.transferMap = transferMap;
   diagnostics.backProjectionRMS = bpHistory;
   diagnostics.positions = positions.length;
+  // Exposed so the GUI can show each candidate patch from the exact pyramid
+  // level and rotation the matcher used, rather than approximating it from
+  // the input image.
+  diagnostics.pyramid = pyramid;
+  diagnostics.patchSize = p;
   return Image.fromPlanar(hw, hh, [working]);
 }
 
@@ -306,35 +322,53 @@ function runSuperResolution(inputRGB, scale, overrides = {}) {
   const cbUp = resample(Image.fromPlanar(inputRGB.width, inputRGB.height, [ycc.planes[1]]), targetW, targetH);
   const crUp = resample(Image.fromPlanar(inputRGB.width, inputRGB.height, [ycc.planes[2]]), targetW, targetH);
   const working = [srY.planes[0], cbUp.planes[0], crUp.planes[0]];
+  // Chroma is frozen on its bicubic upscale. If it were allowed to move it
+  // would (a) contradict the luminance-only transfer guarantee and (b) let a
+  // colour fringe masquerade as recovered detail. The anomaly detector checks
+  // this invariant on the final image.
+  const chromaFrozen = [cbUp.planes[0].slice(), crUp.planes[0].slice()];
 
-  // Back-projection in YCbCr, channel by channel. Keeping the correction in
-  // YCbCr (rather than clipping RGB each iteration) stops strong luminance
-  // edges from dragging chrominance out of gamut and producing colour fringing;
-  // the RGB clip happens only once at the very end.
+  // Back-projection restores the observation constraint in the luminance
+  // channel only. A residual measured on RGB (or on chroma) couples luminance
+  // edges into chroma; restricting the correction keeps colour untouched while
+  // still making Y reproject to the observed Y.
   const observedYCC = rgbToYCbCr(inputRGB);
   const rgbBpHistory = [];
   for (let it = 0; it < params.backProjectionIters; it++) {
-    const hrImg = Image.fromPlanar(targetW, targetH, working);
-    const reprojRGB = degrade(yCbCrToRGB(hrImg), scale, params.degradeSigma);
-    const reprojYCC = rgbToYCbCr(reprojRGB);
-    const rmsPerChannel = [];
-    for (let c = 0; c < 3; c++) {
-      const lrResid = new Float64Array(inputRGB.width * inputRGB.height);
-      let s = 0;
-      for (let i = 0; i < lrResid.length; i++) {
-        const r = observedYCC.planes[c][i] - reprojYCC.planes[c][i];
-        lrResid[i] = r;
-        s += r * r;
-      }
-      rmsPerChannel.push(Number(Math.sqrt(s / lrResid.length).toFixed(4)));
-      const up = resample(
-        Image.fromPlanar(inputRGB.width, inputRGB.height, [lrResid]),
-        targetW, targetH).planes[0];
-      for (let i = 0; i < up.length; i++) working[c][i] += params.bpStep * up[i];
+    const lrResid = new Float64Array(inputRGB.width * inputRGB.height);
+    let s = 0;
+    const yOnly = Image.fromPlanar(targetW, targetH, [working[0]]);
+    const yReproj = degrade(yOnly, scale, params.degradeSigma).planes[0];
+    for (let i = 0; i < lrResid.length; i++) {
+      const r = observedYCC.planes[0][i] - yReproj[i];
+      lrResid[i] = r;
+      s += r * r;
     }
-    rgbBpHistory.push(rmsPerChannel);
+    const yRms = Number(Math.sqrt(s / lrResid.length).toFixed(4));
+    // Chroma residuals are recorded for diagnostics but are not corrected.
+    const cResid = [];
+    const rgbReproj = degrade(yCbCrToRGB(Image.fromPlanar(targetW, targetH, working)),
+      scale, params.degradeSigma);
+    const rgbReprojYCC = rgbToYCbCr(rgbReproj);
+    for (let c = 1; c < 3; c++) {
+      let ss = 0;
+      for (let i = 0; i < lrResid.length; i++) {
+        const d = observedYCC.planes[c][i] - rgbReprojYCC.planes[c][i];
+        ss += d * d;
+      }
+      cResid.push(Number(Math.sqrt(ss / lrResid.length).toFixed(4)));
+    }
+    rgbBpHistory.push([yRms, ...cResid]);
+    const up = resample(
+      Image.fromPlanar(inputRGB.width, inputRGB.height, [lrResid]),
+      targetW, targetH).planes[0];
+    for (let i = 0; i < up.length; i++) working[0][i] += params.bpStep * up[i];
   }
   diagnostics.rgbBackProjectionRMS = rgbBpHistory;
+  // Re-lock chroma after luminance back-projection (it was never modified,
+  // but this makes the invariant explicit and cheap to audit).
+  working[1] = chromaFrozen[0];
+  working[2] = chromaFrozen[1];
 
   const srRGB = clipCopy(yCbCrToRGB(Image.fromPlanar(targetW, targetH, working)));
   const bicubicRGB = clipCopy(yCbCrToRGB(Image.fromPlanar(targetW, targetH, [
@@ -363,20 +397,32 @@ function runSuperResolution(inputRGB, scale, overrides = {}) {
   for (let i = 0; i < perPixel.length; i++) residualMag[i] = Math.sqrt(perPixel[i] / 3);
 
   // Upscale the last-step confidence / transfer maps for visualisation.
+  // Bicubic resampling of a 0/1 mask overshoots (values <0 and >1), which
+  // would turn "fraction of pixels transferred" into a meaningless number;
+  // clamp both maps back to their valid range.
   const lastD = steps.length ? steps[steps.length - 1].d : null;
   let confidenceFull = null, transferFull = null;
   if (lastD) {
-    confidenceFull = resample(
+    const clamp01 = (arr) => {
+      for (let i = 0; i < arr.length; i++) arr[i] = Math.max(0, Math.min(1, arr[i]));
+      return arr;
+    };
+    confidenceFull = clamp01(resample(
       Image.fromPlanar(inputRGB.width, inputRGB.height, [lastD.confidenceMap]),
-      targetW, targetH).planes[0];
-    transferFull = resample(
+      targetW, targetH).planes[0]);
+    transferFull = clamp01(resample(
       Image.fromPlanar(inputRGB.width, inputRGB.height, [lastD.transferMap]),
-      targetW, targetH).planes[0];
+      targetW, targetH).planes[0]);
   }
 
   diagnostics.elapsedMs = Date.now() - t0;
   diagnostics.matchIndexFull = lastD ? lastD.matchIndex : [];
-  return {
+  diagnostics.pyramid = lastD ? lastD.pyramid : null;
+  diagnostics.patchSize = lastD ? lastD.patchSize : params.patchSize;
+  diagnostics.confidenceLRWidth = inputRGB.width;
+  diagnostics.confidenceLRHeight = inputRGB.height;
+  diagnostics.inputChroma = [ycc.planes[1], ycc.planes[2]];
+  const out = {
     sr: srRGB,
     bicubic: bicubicRGB,
     reprojected: clipCopy(reproj),
@@ -392,6 +438,36 @@ function runSuperResolution(inputRGB, scale, overrides = {}) {
     params,
     scale,
   };
+  // Anomalies are computed from the reconstruction's own consistency maps.
+  out.anomalies = require('./anomaly').detectAnomalies(out);
+  return out;
 }
 
-module.exports = { runSuperResolution, DEFAULT_PARAMS, paramsWithOverrides };
+module.exports = { runSuperResolution, DEFAULT_PARAMS, paramsWithOverrides, extractCandidatePatch, extractHRPatch, buildPyramid };
+
+// Recover a candidate's patch from the pyramid level it was actually matched
+// on, undoing its recorded rotation. The GUI uses this so what it shows is the
+// exact example the matcher scored, not a re-derived approximation.
+function extractCandidatePatch(pyramid, cand, p) {
+  const level = pyramid[cand.level];
+  if (!level) return null;
+  const src = level.img.planes[0];
+  const sw = level.img.width, sh = level.img.height;
+  const out = new Image(p, p, 1);
+  for (let yy = 0; yy < p; yy++) {
+    for (let xx = 0; xx < p; xx++) {
+      let sx, sy;
+      switch (cand.rotation) {
+        case 0: sx = cand.cx + xx; sy = cand.cy + yy; break;
+        case 90: sx = sw - 1 - (cand.cy + yy); sy = cand.cx + xx; break;
+        case 180: sx = sw - 1 - (cand.cx + xx); sy = sh - 1 - (cand.cy + yy); break;
+        case 270: sx = cand.cy + yy; sy = sh - 1 - (cand.cx + xx); break;
+        default: return null;
+      }
+      const cx = Math.max(0, Math.min(sw - 1, sx));
+      const cy = Math.max(0, Math.min(sh - 1, sy));
+      out.planes[0][yy * p + xx] = src[cy * sw + cx];
+    }
+  }
+  return out;
+}

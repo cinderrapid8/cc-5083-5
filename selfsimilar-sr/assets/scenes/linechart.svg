@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="288" height="192" viewBox="0 0 288 192">
+  <!-- linechart — generated from scenes/defs/linechart.js. Edit the JSON/spec, not this file. -->
+<defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgb(250,249,245)"/><stop offset="1" stop-color="rgb(236,235,230)"/></linearGradient></defs><rect width="288" height="192" fill="url(#bg)" stroke="none"/>
+  <line x1="45.90370149835944" y1="23.032504407688975" x2="128.49522461345828" y2="23.032504407688975" stroke="#22262e" stroke-opacity="0.8083391452766955" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="138.7399152899388" y1="23.032504407688975" x2="250.79751502797006" y2="23.032504407688975" stroke="#22262e" stroke-opacity="0.8083391452766955" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="26.76430690959096" y1="31.201527503319085" x2="246.6731630105525" y2="31.201527503319085" stroke="#22262e" stroke-opacity="0.7319184189476072" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="25.887442301213742" y1="39.53532641963102" x2="106.17685930706192" y2="39.53532641963102" stroke="#22262e" stroke-opacity="0.8916148473322392" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="117.11961188403521" y1="39.53532641963102" x2="244.74249384067951" y2="39.53532641963102" stroke="#22262e" stroke-opacity="0.8916148473322392" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="38.65705668106675" y1="49.50372431543656" x2="128.80774374645904" y2="49.50372431543656" stroke="#22262e" stroke-opacity="0.886510207504034" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="139.0030406534928" y1="49.50372431543656" x2="242.56299482174217" y2="49.50372431543656" stroke="#22262e" stroke-opacity="0.886510207504034" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="43.48403590843081" y1="58.009437550092116" x2="233.306691500172" y2="58.009437550092116" stroke="#22262e" stroke-opacity="0.8007321061380207" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="32.576617104187605" y1="64.56090272404253" x2="151.01203933972744" y2="64.56090272404253" stroke="#22262e" stroke-opacity="0.7959334309771656" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="161.78607151683298" y1="64.56090272404253" x2="248.05726064629852" y2="64.56090272404253" stroke="#22262e" stroke-opacity="0.7959334309771656" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="29.71533575206995" y1="72.244450381957" x2="130.88636659626562" y2="72.244450381957" stroke="#22262e" stroke-opacity="0.7608843636699021" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="142.0897096318071" y1="72.244450381957" x2="253.78219646289944" y2="72.244450381957" stroke="#22262e" stroke-opacity="0.7608843636699021" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="22.52282802015543" y1="89.51371177148073" x2="22.52282802015543" y2="130.17036494499072" stroke="#282c34" stroke-opacity="0.9114092881791294" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="30.206320486031473" y1="90.36489828351884" x2="30.206320486031473" y2="128.90456192258745" stroke="#282c34" stroke-opacity="0.8405547646433115" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="36.31226138910279" y1="90.8654481591843" x2="36.31226138910279" y2="112.94634993919841" stroke="#282c34" stroke-opacity="0.9440515164658427" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="36.31226138910279" y1="114.94634993919841" x2="36.31226138910279" y2="128.3777985486947" stroke="#282c34" stroke-opacity="0.9440515164658427" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="41.39114480139688" y1="93.09135626742616" x2="41.39114480139688" y2="130.1315266483277" stroke="#282c34" stroke-opacity="0.7812243817560375" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="46.18143913662061" y1="89.46958586081863" x2="46.18143913662061" y2="129.60736412655564" stroke="#282c34" stroke-opacity="0.8060988200269639" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="52.01467155199498" y1="89.90933953311294" x2="52.01467155199498" y2="128.75718405021354" stroke="#282c34" stroke-opacity="0.7651479145511985" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="58.34821399860084" y1="89.22718425227329" x2="58.34821399860084" y2="128.30799800816925" stroke="#282c34" stroke-opacity="0.75546935191378" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="64.95870696101338" y1="90.62094455782324" x2="64.95870696101338" y2="127.99554028220476" stroke="#282c34" stroke-opacity="0.7562215013802052" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="70.95143874222413" y1="88.9965239973925" x2="70.95143874222413" y2="127.49349376101047" stroke="#282c34" stroke-opacity="0.8889857093989849" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="77.4666204242967" y1="91.17879451366142" x2="77.4666204242967" y2="127.09747242227198" stroke="#282c34" stroke-opacity="0.9175215105526149" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="83.39285525400192" y1="89.07700433304532" x2="83.39285525400192" y2="129.87198384616525" stroke="#282c34" stroke-opacity="0.7813908374682068" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="89.09045231435448" y1="91.85194582615047" x2="89.09045231435448" y2="127.6593069931306" stroke="#282c34" stroke-opacity="0.8350182266905903" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="93.88444765470922" y1="89.80006940329447" x2="93.88444765470922" y2="107.59997194876767" stroke="#282c34" stroke-opacity="0.7281470177136361" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="93.88444765470922" y1="109.59997194876767" x2="93.88444765470922" y2="126.76212416280062" stroke="#282c34" stroke-opacity="0.7281470177136361" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="100.26696848170832" y1="90.38571795022115" x2="100.26696848170832" y2="127.51404582167045" stroke="#282c34" stroke-opacity="0.9396166454069316" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="105.43330070050433" y1="90.89804547598585" x2="105.43330070050433" y2="127.52855290014297" stroke="#282c34" stroke-opacity="0.958518357630819" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="111.01263865316287" y1="89.7793768355809" x2="111.01263865316287" y2="129.68212588464843" stroke="#282c34" stroke-opacity="0.8278842425532639" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="116.57241468690336" y1="92.82797931397333" x2="116.57241468690336" y2="129.4075099384226" stroke="#282c34" stroke-opacity="0.7655648133158683" stroke-width="2" stroke-linecap="butt"/>
+  <line x1="123.30776830436662" y1="93.01042167518287" x2="123.30776830436662" y2="127.69225327203051" stroke="#282c34" stroke-opacity="0.9240937916189431" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="128.9156141062267" y1="90.62324428169056" x2="128.9156141062267" y2="128.92425275070593" stroke="#282c34" stroke-opacity="0.7751268034055829" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="134.28959124628454" y1="89.57076738907024" x2="134.28959124628454" y2="110.77280560456587" stroke="#282c34" stroke-opacity="0.8475775141641497" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="134.28959124628454" y1="112.77280560456587" x2="134.28959124628454" y2="129.03557450704278" stroke="#282c34" stroke-opacity="0.8475775141641497" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="141.36426612641662" y1="92.91556798826903" x2="141.36426612641662" y2="129.38136610209943" stroke="#282c34" stroke-opacity="0.8954253573529423" stroke-width="2" stroke-linecap="butt"/>
+  <circle cx="196" cy="108" r="30" fill="#343840" stroke="none"/>
+  <circle cx="196" cy="108" r="27.6" fill="#343840" fill-opacity="0.85" stroke="none"/>
+  <circle cx="196" cy="108" r="4" fill="#343840" stroke="none"/>
+  <line x1="158" y1="142" x2="262" y2="76" stroke="#2c3038" stroke-width="1.2" stroke-linecap="butt"/>
+  <line x1="160" y1="78" x2="258" y2="140" stroke="#2c3038" stroke-opacity="0.9" stroke-width="1.1" stroke-linecap="butt"/>
+  <rect x="26" y="148" width="34" height="2" fill="#2e323a" stroke="none"/>
+  <rect x="70" y="148" width="34" height="2" fill="#2e323a" stroke="none"/>
+  <rect x="112" y="148" width="40" height="2" fill="#2e323a" stroke="none"/>
+  <rect x="124.4" y="148" width="1.2" height="2" fill="#fcfbf8" stroke="none"/>
+  <line x1="30" y1="168" x2="42" y2="168" stroke="#282c34" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="36" y1="162" x2="36" y2="174" stroke="#282c34" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="74" y1="171" x2="84" y2="171" stroke="#282c34" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="79" y1="165" x2="79" y2="177" stroke="#282c34" stroke-width="1" stroke-linecap="butt"/>
+  <line x1="232" y1="166" x2="244" y2="166" stroke="#282c34" stroke-width="1.2" stroke-linecap="butt"/>
+  <line x1="238" y1="160" x2="238" y2="172" stroke="#282c34" stroke-width="1.2" stroke-linecap="butt"/>
+</svg>

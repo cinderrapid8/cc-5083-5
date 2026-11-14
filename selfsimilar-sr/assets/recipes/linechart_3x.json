@@ -1,0 +1,37 @@
+{
+  "scene": "linechart",
+  "scale": 3,
+  "reference": "assets/references/linechart/3x/HR.png",
+  "input": "assets/inputs/linechart/3x/LR.png",
+  "referenceSize": [
+    288,
+    192
+  ],
+  "inputSize": [
+    96,
+    64
+  ],
+  "crop": {
+    "x": 0,
+    "y": 0,
+    "w": 288,
+    "h": 192
+  },
+  "degradation": {
+    "blur": {
+      "kernel": "gaussian",
+      "sigma": 1.15,
+      "edge": "clamp"
+    },
+    "downsample": {
+      "method": "catmull-rom-bicubic",
+      "factor": 3,
+      "grid": "pixel-centre-aligned"
+    },
+    "colour": "sRGB channelwise, applied before engine YCbCr conversion"
+  },
+  "referenceSha256": "1d952b24fb4eb6a02b24bc33f36cd709aadc9e11b71b29d5d4cc15350de96cd7",
+  "inputSha256": "e9273d0f84213b9db8dc4a2e64f9c8dd3ff625a95250ad6a1ecf8b5af98acf3b",
+  "referencePixelDigest": "4ace868af9769e7008811b0118b52bd3c4529cc0fb6ca33a9b0d95fc42caa2ae",
+  "inputPixelDigest": "8e23b8aebf08eb201300508b26e81085ae7460af2ba85be3056ee744536e9916"
+}
